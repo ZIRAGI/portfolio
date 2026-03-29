@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карьера | Портфолио Пономарёва Г.К.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            opacity: 0; 
+            animation: fadeIn 0.8s ease-out forwards;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .swot-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .swot-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-node {
+            transition: all 0.3s ease;
+        }
+        .timeline-node:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 8px rgba(14, 165, 233, 0.2);
+        }
+        
+        .roadmap-card {
+            transition: all 0.4s ease;
+        }
+        .roadmap-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .goal-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            transition: all 0.3s ease;
+        }
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.2);
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/50" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 bg-gradient-to-br from-sky-500 to-cyan-400 rounded-lg shadow-lg"></div>
+                    <span class="font-black text-xl tracking-tight text-slate-900">PORTFOLIO</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Главная</a>
+                    <a href="resume.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Резюме</a>
+                    <a href="education.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Обучение</a>
+                    <a href="achievements.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Достижения</a>
+                    <a href="career.html" class="nav-link active px-4 py-2 text-sm font-semibold text-sky-600">Карьера</a>
+                    <a href="contact.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Контакты</a>
+                    <a href="recommendations.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Рекомендации</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition">
+                    <i data-lucide="menu" class="w-6 h-6 text-slate-700"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="px-4 py-3 space-y-1">
+                <a href="index.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Главная</a>
+                <a href="resume.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Резюме</a>
+                <a href="education.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Обучение</a>
+                <a href="achievements.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Достижения</a>
+                <a href="career.html" class="block px-4 py-3 rounded-xl bg-sky-50 text-sky-600 font-semibold">Карьера</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Контакты</a>
+                <a href="recommendations.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Рекомендации</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header -->
+            <div class="mb-12 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i>
+                    Карьерное развитие
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">План развития карьеры</h1>
+                <p class="text-slate-600 text-lg max-w-3xl mx-auto">
+                    Стратегический план профессионального развития с оценкой компетенций, 
+                    SWOT-анализом и дорожной картой до выпуска из колледжа.
+                </p>
+            </div>
+
+            <!-- Career Vision -->
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-[2.5rem] p-8 lg:p-12 text-white mb-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 text-center">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur rounded-full text-sky-300 text-xs font-bold uppercase tracking-wider mb-6">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        Карьерное развитие
+                    </div>
+                    
+                    <h2 class="text-3xl font-bold mb-4">Карьерная цель</h2>
+                    
+                    <div class="max-w-2xl mx-auto mb-8 p-8 bg-white/5 backdrop-blur rounded-[2rem] border-2 border-dashed border-white/20">
+                        <i data-lucide="clock" class="w-12 h-12 text-sky-400 mx-auto mb-4"></i>
+                        <p class="text-xl text-slate-300 leading-relaxed">
+                            Раздел в разработке. Скоро здесь появится моя карьерная цель и стратегия профессионального развития.
+                        </p>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <span class="px-4 py-2 bg-sky-500/20 backdrop-blur rounded-full text-sm font-semibold text-sky-300">2027 год</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Roadmap -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                    <i data-lucide="map" class="w-6 h-6 text-sky-600"></i>
+                    Дорожная карта развития
+                </h2>
+                
+                <div class="bg-white rounded-[2.5rem] shadow-lg border border-slate-200 p-8 lg:p-12">
+                    <div class="relative">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-6 lg:left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 via-sky-500 via-cyan-500 to-emerald-500 rounded-full"></div>
+                        
+                        <div class="space-y-8">
+                            <!-- Stage 0 - 1 курс -->
+                            <div class="relative pl-16 lg:pl-20">
+                                <div class="timeline-node absolute left-0 lg:left-2 w-12 h-12 lg:w-14 lg:h-14 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg z-10">
+                                    <i data-lucide="check" class="w-6 h-6"></i>
+                                </div>
+                                <div class="roadmap-card bg-emerald-50 p-6 rounded-2xl border border-emerald-200">
+                                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                                        <div>
+                                            <span class="inline-block px-3 py-1 bg-emerald-500 text-white rounded-full text-xs font-bold uppercase tracking-wider mb-2">Завершено</span>
+                                            <h3 class="text-xl font-bold text-slate-900">Старт (2023—2024)</h3>
+                                        </div>
+                                        <span class="text-emerald-600 font-bold text-sm">1 курс</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-700 mb-4">
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                            <span>Поступление в колледж по ФП «Профессионалитет»</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                            <span>Освоение базовых дисциплин: инженерная графика, черчение</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                            <span>Начало изучения AutoCAD и основ проектирования</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                            <span>Адаптация к учебному процессу и студенческой жизни</span>
+                                        </li>
+                                    </ul>
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex-1 h-2 bg-white rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                        <span class="text-xs font-bold text-emerald-600">100%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stage 1 -->
+                            <div class="relative pl-16 lg:pl-20">
+                                <div class="timeline-node absolute left-0 lg:left-2 w-12 h-12 lg:w-14 lg:h-14 bg-sky-500 rounded-full flex items-center justify-center text-white shadow-lg z-10">
+                                    <span class="font-bold text-sm">1</span>
+                                </div>
+                                <div class="roadmap-card bg-sky-50 p-6 rounded-2xl border border-sky-200">
+                                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                                        <div>
+                                            <span class="inline-block px-3 py-1 bg-sky-500 text-white rounded-full text-xs font-bold uppercase tracking-wider mb-2">Текущий этап</span>
+                                            <h3 class="text-xl font-bold text-slate-900">Фундамент (2024—2025)</h3>
+                                        </div>
+                                        <span class="text-sky-600 font-bold text-sm">2 курс</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-700 mb-4">
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0"></i>
+                                            <span>Углубление в сметное дело и освоение Гранд-Смета</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0"></i>
+                                            <span>Участие в WorldSkills и конкурсах профмастерства</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="check-circle" class="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0"></i>
+                                            <span>Прохождение первой производственной практики на стройке</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span class="text-slate-500">Получение удостоверения по охране труда</span>
+                                        </li>
+                                    </ul>
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex-1 h-2 bg-white rounded-full overflow-hidden">
+                                            <div class="h-full bg-sky-500 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                        <span class="text-xs font-bold text-sky-600">65%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stage 2 -->
+                            <div class="relative pl-16 lg:pl-20">
+                                <div class="timeline-node absolute left-0 lg:left-2 w-12 h-12 lg:w-14 lg:h-14 bg-cyan-500 rounded-full flex items-center justify-center text-white shadow-lg z-10">
+                                    <span class="font-bold text-sm">2</span>
+                                </div>
+                                <div class="roadmap-card bg-cyan-50 p-6 rounded-2xl border border-cyan-200">
+                                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                                        <div>
+                                            <span class="inline-block px-3 py-1 bg-cyan-500 text-white rounded-full text-xs font-bold uppercase tracking-wider mb-2">Следующий</span>
+                                            <h3 class="text-xl font-bold text-slate-900">Специализация (2025—2026)</h3>
+                                        </div>
+                                        <span class="text-cyan-600 font-bold text-sm">3 курс</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-700 mb-4">
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Изучение Revit и BIM-технологий проектирования</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Стажировка в проектном бюро или ПТО строительной компании (3 месяца)</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Подготовка к получению допусков СРО</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Участие в региональном этапе WorldSkills</span>
+                                        </li>
+                                    </ul>
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex-1 h-2 bg-white rounded-full overflow-hidden">
+                                            <div class="h-full bg-cyan-500 rounded-full" style="width: 0%"></div>
+                                        </div>
+                                        <span class="text-xs font-bold text-cyan-600">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stage 3 -->
+                            <div class="relative pl-16 lg:pl-20">
+                                <div class="timeline-node absolute left-0 lg:left-2 w-12 h-12 lg:w-14 lg:h-14 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-lg z-10">
+                                    <span class="font-bold text-sm">3</span>
+                                </div>
+                                <div class="roadmap-card bg-emerald-50 p-6 rounded-2xl border border-emerald-200">
+                                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
+                                        <div>
+                                            <span class="inline-block px-3 py-1 bg-emerald-500 text-white rounded-full text-xs font-bold uppercase tracking-wider mb-2">Финальный</span>
+                                            <h3 class="text-xl font-bold text-slate-900">Профессиональный старт (2026—2027)</h3>
+                                        </div>
+                                        <span class="text-emerald-600 font-bold text-sm">4 курс</span>
+                                    </div>
+                                    <ul class="space-y-2 text-slate-700 mb-4">
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Преддипломная практика с последующим трудоустройством</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Защита дипломного проекта на тему актуальной строительной задачи</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Получение диплома и трудоустройство техником-строителем / сметчиком</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <i data-lucide="circle" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                            <span>Поступление в вуз на заочное отделение (строительство)</span>
+                                        </li>
+                                    </ul>
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex-1 h-2 bg-white rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 0%"></div>
+                                        </div>
+                                        <span class="text-xs font-bold text-emerald-600">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Potential -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                    <i data-lucide="battery-charging" class="w-6 h-6 text-sky-600"></i>
+                    Карьерный потенциал
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="goal-card p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center text-sky-600 mb-4">
+                            <i data-lucide="pencil-ruler" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">Проектные навыки</h3>
+                        <p class="text-sm text-slate-600 mb-4">Готовность к выполнению работ по составлению смет, чертежей, технологических карт</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-500">Сметы</span>
+                                <span class="font-bold text-sky-600">75%</span>
+                            </div>
+                            <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-sky-500 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="goal-card p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 mb-4">
+                            <i data-lucide="briefcase" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">Практический опыт</h3>
+                        <p class="text-sm text-slate-600 mb-4">Результаты освоения видов деятельности через производственные практики</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-500">Практика</span>
+                                <span class="font-bold text-emerald-600">100+ часов</span>
+                            </div>
+                            <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="goal-card p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-4">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 mb-2">Soft Skills</h3>
+                        <p class="text-sm text-slate-600 mb-4">Командная работа, коммуникация, лидерство через внеучебную деятельность</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-500">Развитие</span>
+                                <span class="font-bold text-purple-600">90%</span>
+                            </div>
+                            <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-purple-500 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote -->
+            <div class="text-center py-12 bg-gradient-to-r from-sky-50 to-cyan-50 rounded-[2.5rem]">
+                <i data-lucide="quote" class="w-12 h-12 text-sky-300 mx-auto mb-4"></i>
+                <p class="text-2xl md:text-3xl font-bold text-slate-800 italic max-w-4xl mx-auto leading-relaxed mb-6">
+                    "Качество — это делать что-то правильно, даже когда никто не смотрит."
+                </p>
+                <p class="text-slate-500 font-medium">— Генри Форд</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-400 text-sm">© 2026 ГБПОУ ЮУГТК • Портфолио карьерного роста</p>
+            <div class="flex gap-6">
+                <a href="https://t.me/MrKammenn" target="_blank" class="text-slate-400 hover:text-sky-400 transition"><i data-lucide="send" class="w-5 h-5"></i></a>
+                <a href="#" class="text-slate-400 hover:text-sky-400 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
