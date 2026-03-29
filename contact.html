@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Портфолио Пономарёва Г.К.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            opacity: 0; 
+            animation: fadeIn 0.8s ease-out forwards;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .contact-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .contact-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.3);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -10px rgba(14, 165, 233, 0.5);
+        }
+        
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 2rem;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200/50" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-8 h-8 bg-gradient-to-br from-sky-500 to-cyan-400 rounded-lg shadow-lg"></div>
+                    <span class="font-black text-xl tracking-tight text-slate-900">PORTFOLIO</span>
+                </a>
+                
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Главная</a>
+                    <a href="resume.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Резюме</a>
+                    <a href="education.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Обучение</a>
+                    <a href="achievements.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Достижения</a>
+                    <a href="career.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Карьера</a>
+                    <a href="contact.html" class="nav-link active px-4 py-2 text-sm font-semibold text-sky-600">Контакты</a>
+                    <a href="recommendations.html" class="nav-link px-4 py-2 text-sm font-semibold text-slate-600 hover:text-sky-600 transition">Рекомендации</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition">
+                    <i data-lucide="menu" class="w-6 h-6 text-slate-700"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200">
+            <div class="px-4 py-3 space-y-1">
+                <a href="index.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Главная</a>
+                <a href="resume.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Резюме</a>
+                <a href="education.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Обучение</a>
+                <a href="achievements.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Достижения</a>
+                <a href="career.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Карьера</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-xl bg-sky-50 text-sky-600 font-semibold">Контакты</a>
+                <a href="recommendations.html" class="block px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50 font-semibold">Рекомендации</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header -->
+            <div class="mb-12">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-sky-50 text-sky-700 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    Связь
+                </div>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">Контакты</h1>
+                <p class="text-slate-600 text-lg max-w-2xl">
+                    Открыт для предложений о стажировках, проектной работе в строительстве, 
+                    консультациях и нетворкингу. Выберите удобный способ связи.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8">
+                
+                <!-- Left Column - Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    
+                    <!-- Contact Cards -->
+                    <div class="space-y-4">
+                        <a href="https://t.me/MrKammenn" target="_blank" class="contact-card block bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center text-sky-600">
+                                    <i data-lucide="send" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Telegram</p>
+                                    <p class="font-bold text-lg text-slate-900">@MrKammenn</p>
+                                    <p class="text-sm text-sky-600">Написать сообщение →</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:tusiaru@outlook.com" class="contact-card block bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Email</p>
+                                    <p class="font-bold text-lg text-slate-900">tusiaru@outlook.com</p>
+                                    <p class="text-sm text-emerald-600">Отправить письмо →</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="contact-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Телефон</p>
+                                    <p class="font-bold text-lg text-slate-900">+79823585854</p>
+                                    <p class="text-sm text-slate-500">Доступен в рабочее время</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-card bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Локация</p>
+                                    <p class="font-bold text-lg text-slate-900">Челябинск, Россия</p>
+                                    <p class="text-sm text-slate-500">Готов к командировкам / релокации</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR Code -->
+                    <div class="bg-slate-900 rounded-[2rem] p-8 text-center text-white shadow-2xl">
+                        <div class="mb-4">
+                            <i data-lucide="smartphone" class="w-8 h-8 text-sky-400 mx-auto mb-2"></i>
+                            <h3 class="font-bold text-lg">Быстрый контакт</h3>
+                            <p class="text-slate-400 text-sm">Отсканируйте QR-код камерой</p>
+                        </div>
+                        <div class="qr-container inline-block mb-4">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://t.me/MrKammenn" 
+                                 alt="QR Code" 
+                                 class="w-40 h-40">
+                        </div>
+                        <p class="text-sky-400 font-bold text-sm">t.me/MrKammenn</p>
+                    </div>
+                </div>
+
+                <!-- Right Column - Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-[2.5rem] shadow-lg border border-slate-200 p-8 lg:p-12">
+                        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center gap-3">
+                            <i data-lucide="edit-3" class="w-6 h-6 text-sky-600"></i>
+                            Написать сообщение
+                        </h2>
+                        <p class="text-slate-500 mb-8">Заполните форму ниже, и я отвечу вам в течение 24 часов.</p>
+
+                        <form id="contact-form" action="mailto:tusiaru@outlook.com" method="POST" enctype="text/plain" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Имя</label>
+                                    <input type="text" 
+                                           name="name"
+                                           placeholder="Ваше имя" 
+                                           class="form-input w-full bg-slate-50 border border-slate-200 px-6 py-4 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white text-slate-900 placeholder-slate-400"
+                                           required>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Email</label>
+                                    <input type="email" 
+                                           name="email"
+                                           placeholder="your@email.com" 
+                                           class="form-input w-full bg-slate-50 border border-slate-200 px-6 py-4 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white text-slate-900 placeholder-slate-400"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Тема</label>
+                                <select name="subject" class="form-input w-full bg-slate-50 border border-slate-200 px-6 py-4 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white text-slate-900">
+                                    <option value="">Выберите тему...</option>
+                                    <option value="internship">Предложение о стажировке в строительстве</option>
+                                    <option value="job">Вакансия / Работа</option>
+                                    <option value="project">Совместный проект</option>
+                                    <option value="practice">Производственная практика</option>
+                                    <option value="consultation">Консультация / помощь</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Сообщение</label>
+                                <textarea name="message" rows="5" 
+                                          placeholder="Опишите ваше предложение или вопрос подробно..." 
+                                          class="form-input w-full bg-slate-50 border border-slate-200 px-6 py-4 rounded-2xl focus:outline-none focus:border-sky-500 focus:bg-white text-slate-900 placeholder-slate-400 resize-none"
+                                          required></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn w-full py-4 rounded-2xl text-white font-bold text-lg flex items-center justify-center gap-2">
+                                <span>Отправить сообщение</span>
+                                <i data-lucide="send" class="w-5 h-5"></i>
+                            </button>
+                        </form>
+
+                        <!-- Note about mailto -->
+                        <div class="mt-4 p-4 bg-sky-50 rounded-xl">
+                            <p class="text-sm text-sky-700 flex items-start gap-2">
+                                <i data-lucide="info" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+                                <span>Нажатие кнопки откроет ваш почтовый клиент с предзаполненным письмом на адрес tusiaru@outlook.com</span>
+                            </p>
+                        </div>
+
+                        <!-- Success Message (Hidden by default) -->
+                        <div id="success-message" class="hidden text-center py-12">
+                            <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mx-auto mb-4">
+                                <i data-lucide="check" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">Сообщение отправлено!</h3>
+                            <p class="text-slate-600">Спасибо за обращение. Я свяжусь с вами в ближайшее время.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-slate-400 text-sm">© 2026 ГБПОУ ЮУГТК • Портфолио карьерного роста</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-slate-400 hover:text-sky-400 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="https://t.me/MrKammenn" target="_blank" class="text-slate-400 hover:text-sky-400 transition"><i data-lucide="send" class="w-5 h-5"></i></a>
+                <a href="mailto:tusiaru@outlook.com" class="text-slate-400 hover:text-sky-400 transition"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
